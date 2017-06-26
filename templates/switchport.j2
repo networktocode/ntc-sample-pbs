@@ -1,0 +1,20 @@
+interface {{ interface }}
+{% if description is defined %}
+ description {{ description }}
+{% endif %}
+{% if admin_state is defined %}
+{% if admin_state == "up" %}
+ no shutdown
+{% elif admin_state == "down" %}
+ shutdown
+{% endif %}
+{% endif %}
+{% if speed is defined %}
+ speed {{ speed }}
+{% endif %}
+{% if duplex is defined %}
+ duplex {{ duplex }}
+{% endif %}
+{% if vlan is defined %}
+ switchport access vlan {{ vlan }}
+{% endif %}

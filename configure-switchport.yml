@@ -1,0 +1,27 @@
+---
+
+  - name: CONFIGURE SWITCHPORT ON IOS
+    hosts: "{{ devices }}"
+    connection: local
+    gather_facts: no
+
+    tasks:
+
+      - set_fact:
+          path: "{{ playbook_dir }}/switchport-configs"
+
+      - name: ENSURE DIR EXISTS - IOS
+        file:
+          path: "{{ path }}"
+          state: "directory"
+
+      - template:
+          src: switchport.j2
+          dest: "{{ path }}/{{ inventory_hostname }}.txt"
+
+      - name: DEPLOY IOS CONFIGS
+        ios_config:
+          src: "{{ path }}/{{ inventory_hostname }}.txt"
+          provider: "{{ primary_credentials }}"
+          host: "{{ ansible_host }}"
+
