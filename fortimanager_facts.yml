@@ -7,6 +7,8 @@
   tasks:
     - name: GET FORTIMANAGER FACTS AND FORTIGATES AND CONFIGS
       fortimgr_facts:
-        provider: "{{ fortimanager_provider }}"
+        host: "{{ ansible_host }}"
+        username: "{{ username }}"
+        password: "{{ password }}"
         fortigates: "all"
         config_filter: "all"
