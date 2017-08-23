@@ -5,15 +5,25 @@
   gather_facts: false
 
   tasks:
+---
+- name: GET FACTS FROM FORTIMANAGER
+  hosts: fortimanager
+  connection: local
+  gather_facts: false
+  vars:
+    fortimanager_provider:
+      username: "{{ primary_credentials['username'] }}"
+      password: "{{ primary_credentials['password'] }}"
+      host: "{{ ip_address }}"
+
+  tasks:
     - name: GET FORTIMANAGER FACTS AND FORTIGATES AND CONFIGS
       fortimgr_facts:
-        host: "{{ ansible_host }}"
-        username: "{{ username }}"
-        password: "{{ password }}"
+        provider: "{{ fortimanager_provider }}"
         fortigates: "all"
         config_filter: "all"
-      register: fm_facts
+      register: "my_facts"
 
-    - name: DEBUG FORTIGATES
+    - name: DEBUG VAR
       debug:
-        var: fm_facts.ansible_facts.devices
+        var: "my_facts"
