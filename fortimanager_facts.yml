@@ -1,0 +1,14 @@
+---
+- name: GET FACTS FROM FORTIMANAGER
+  hosts: fortimanager
+  connection: local
+  gather_facts: false
+
+  tasks:
+    - name: GET FORTIMANAGER FACTS AND FORTIGATES AND CONFIGS
+      fortimgr_facts:
+        host: "{{ ansible_host }}"
+        username: "{{ username }}"
+        password: "{{ password }}"
+        fortigates: "all"
+        config_filter: "all"
