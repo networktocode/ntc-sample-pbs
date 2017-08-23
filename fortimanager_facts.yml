@@ -12,3 +12,8 @@
         password: "{{ password }}"
         fortigates: "all"
         config_filter: "all"
+      register: fm_facts
+
+    - name: DEBUG FORTIGATES
+      debug:
+        var: fm_facts.ansible_facts.devices
