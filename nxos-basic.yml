@@ -1,0 +1,15 @@
+---
+
+  - name: CONFIGURE SWITCHPORT ON IOS
+    hosts: JEDE
+    connection: local
+    gather_facts: no
+
+    tasks:
+
+      - name: DEPLOY IOS CONFIGS
+        nxos_config:
+          commands:
+            - snmp-server location {{ location }}
+          provider: "{{ primary_credentials }}"
+          host: "{{ ansible_host }}"
