@@ -1,7 +1,7 @@
 ---
 
   - name: CONFIGURE SWITCHPORT ON IOS
-    hosts: JEDE
+    hosts: ntc_site_JEDE
     connection: local
     gather_facts: no
 
