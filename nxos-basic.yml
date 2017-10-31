@@ -1,7 +1,7 @@
 ---
 
   - name: CONFIGURE SWITCHPORT ON IOS
-    hosts: ntc_site_JEDE
+    hosts: site_JEDE
     connection: local
     gather_facts: no
 
@@ -10,6 +10,6 @@
       - name: DEPLOY IOS CONFIGS
         nxos_config:
           commands:
-            - snmp-server location {{ location }}
+            - snmp-server location {{ location | default('test site') }}
           provider: "{{ primary_credentials }}"
           host: "{{ ansible_host }}"
