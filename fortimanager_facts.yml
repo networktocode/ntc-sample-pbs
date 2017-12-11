@@ -3,13 +3,6 @@
   hosts: fortimanager
   connection: local
   gather_facts: false
-
-  tasks:
----
-- name: GET FACTS FROM FORTIMANAGER
-  hosts: fortimanager
-  connection: local
-  gather_facts: false
   vars:
     fortimanager_provider:
       username: "{{ primary_credentials['username'] }}"
