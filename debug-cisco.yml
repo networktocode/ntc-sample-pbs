@@ -1,7 +1,7 @@
 ---
 
   - name: SAMPLE PLAYBOOK
-    hosts: vendor_cisco
+    hosts: site_nyc
     connection: local
     gather_facts: no
 
