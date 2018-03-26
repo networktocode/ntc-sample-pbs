@@ -1,0 +1,21 @@
+---
+
+  - name: SAMPLE PLAYBOOK
+    hosts: all
+    connection: local
+    gather_facts: no
+
+    tasks:
+
+      - name: PRINT HOSTNAME
+        debug:
+          var: inventory_hostname
+
+      - name: PRINT ALL VARIABLES
+        debug:
+          var: hostvars[inventory_hostname]
+
+
+      - name: PRINT A MESSAGE
+        debug:
+          msg: "The hostname is {{ inventory_hostname }}."
